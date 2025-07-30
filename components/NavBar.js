@@ -8,15 +8,11 @@ export default function NavBar() {
                     <li>
                         <Link href="/" className="text-lg font-bold text-white hover:text-purple-400 transition-colors">Bookings</Link>
                     </li>
-                    <li>
-                        <Link href="/OurTeam" className="text-lg font-bold text-white hover:text-purple-400 transition-colors">Our Team</Link>
-                    </li>
+
                     <li>
                         <Link href="/FindUs" className="text-lg font-bold text-white hover:text-purple-400 transition-colors">Find Us</Link>
                     </li>
-                    <li>
-                        <Link href="/Products" className="text-lg font-bold text-white hover:text-purple-400 transition-colors">Products</Link>
-                    </li>
+
                     <li>
                         <Link href="/Reviews" className="text-lg font-bold text-white hover:text-purple-400 transition-colors">Reviews</Link>
                     </li>

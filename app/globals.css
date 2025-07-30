@@ -26,7 +26,7 @@ body {
 }
 
 /* Animation for moving elements */
-@keyframes marqueeAnim {
+@keyframes reviewMarquee {
   0% { transform: translateX(0); }
   100% { transform: translateX(-50%); }
 }
@@ -35,5 +35,5 @@ body {
 .animate-marquee {
   display: inline-block;
   min-width: 100%;
-  animation: marqueeAnim 40s linear infinite;
+  animation: reviewMarquee 40s linear infinite;
 }

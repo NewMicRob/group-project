@@ -10,7 +10,7 @@ import HairStylists from "@/components/HairStylists";
 export default function Bookings() {
   return (
     <div className="flex flex-col bg-gradient-to-r from-blue-600 to-purple-600 w-full">
-      <Header title='Welcome to the NAME page look into adding an img here instead of having text' />
+      <Header title='Styling Salon' />
       <NavBar />
       <div className="flex-1">
         <MainContent>

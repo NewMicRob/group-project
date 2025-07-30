@@ -20,6 +20,10 @@ export default function HairStylists() {
     // State to store the width
     const [marqueeWidth, setMarqueeWidth] = useState(0);
 
+    // State for stylist selection
+    const [selectedStylist, setSelectedStylist] = useState(stylists[0].name);
+    const [serviceRequest, setServiceRequest] = useState("");
+
     useEffect(() => {
         if (marqueeRef.current) {
             setMarqueeWidth(marqueeRef.current.scrollWidth);
@@ -27,40 +31,53 @@ export default function HairStylists() {
     }, []);
 
     // Create the stylists elements with spacing
-    const marqueeElements = stylists.map((s) => (
+    const marqueeElements = stylists.map((s, idx) => ( // Maps stylists array
         <span
-            key={s.name}
-            style={{ display: "inline-block", marginLeft: 50, marginRight: 50 }}
+            key={s.name + idx} // Unique key for each stylist
+            className="inline-block mx-24" // Add margin for spacing
         >
-            {s.name}: {s.bio}
+            <span className="font-semibold">{s.name}</span>: {s.bio}
         </span>
     ));
 
-    // Animation duration based on content width and speed
+    // Animation speed
     const speed = 100;
     const duration = marqueeWidth ? marqueeWidth / speed : 10;
 
+    // alerts for form
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        alert(`Stylist: ${selectedStylist}\nService: ${serviceRequest}`);
+        setServiceRequest("");
+    };
+
     return (
-        // Container for the marquee and header
+        // Container for the marquee
         <div className="w-[70%] mx-auto mb-2">
             <h2 className="text-xl font-bold text-center mb-2 text-black">
                 Meet Our Stylists
             </h2>
-            <div className="overflow-hidden h-10 flex items-center bg-gradient-to-r from-blue-400 to-purple-400 py-1 shadow rounded text-black">
-                {/* Scrolling content */}
+            <div className="overflow-hidden h-24 flex items-center bg-gradient-to-r from-blue-400 to-purple-400 py-1 shadow rounded text-black w-screen relative left-1/2 right-1/2 -translate-x-1/2 my-8">
                 <div
                     style={{
                         display: "inline-block",
                         whiteSpace: "nowrap",
-                        animation: `marqueeAnim 40s linear infinite`
+                        animation: "reviewMarquee 30s linear infinite"
                     }}
-                >
-                    <span ref={marqueeRef}>
-                        {marqueeElements}
-                    </span>
-                    <span aria-hidden="true">
-                        {marqueeElements}
-                    </span>
+                    >
+                        {[...stylists, ...stylists].map((s, idx) => ( // For smooth scrolling
+                            <span
+                            key={s.name + idx}
+                            className="inline-block"
+                            style={{ marginRight: "4rem" }} // Stylist spacing
+                            >
+                                <span className="rounded-lg px-0 py-4 min-w-[200px] shadow-none text-black font-medium flex items-center gap-4 bg-transparent text-xl">
+                                    <span>
+                                        <strong>{s.name}:</strong> {s.bio}
+                                    </span>
+                                </span>
+                            </span>
+                        ))}
                 </div>
             </div>
         </div>
