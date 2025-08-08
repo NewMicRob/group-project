@@ -1,10 +1,8 @@
 "use client";
 import { useState } from "react";
 import MainContent from "@/components/MainContent";
-import Header from "@/components/Header";
-import NavBar from "@/components/NavBar";
-import Footer from "@/components/Footer";
 import ReviewForm from "@/components/ReviewForm";
+import PageLayout from "@/components/PageLayout";
 
 export default function ReviewsPage() {
     const [reviews, setReviews] = useState([ // Default reviews Array
@@ -21,16 +19,11 @@ export default function ReviewsPage() {
     ]);
 
     return (
-    <div className="flex flex-col min-h-screen bg-gradient-to-r from-blue-600 to-purple-600 w-full">
-        <Header title='Reviews' />
-        <NavBar />
-        <div className="flex-1">
-        <MainContent>
-        {/* Reviews Section with props */}
-        <ReviewForm reviews={reviews} setReviews={setReviews} />
-        </MainContent>       
-        </div>
-        <Footer />
-    </div>
+        <PageLayout title='Reviews'>
+            <MainContent>
+                {/* Reviews Section with props */}
+                <ReviewForm reviews={reviews} setReviews={setReviews} />
+            </MainContent>
+        </PageLayout>
     );
 }

@@ -93,7 +93,7 @@ export default function BookAppointment() {
     };
 
     return (
-        <div className="flex flex-col h-screen w-full">
+        <div className="flex flex-col w-full">
             <main className="flex-grow w-full py-8 px-6">
                 {/* Appointment form */}
                 <form onSubmit={handleSubmit} className="text-center bg-white rounded-xl shadow-lg p-6 w-[50%] mx-auto">
