@@ -1,5 +1,5 @@
 "use client";
-import React, { useRef, useEffect, useState } from "react";
+import React from "react";
 
 // Array of stylist objects with name and bio
 const stylists = [
@@ -16,64 +16,30 @@ const stylists = [
 ];
 
 export default function HairStylists() {
-    const marqueeRef = useRef(null);
-    // State to store the width
-    const [marqueeWidth, setMarqueeWidth] = useState(0);
-
-    // State for stylist selection
-    const [selectedStylist, setSelectedStylist] = useState(stylists[0].name);
-    const [serviceRequest, setServiceRequest] = useState("");
-
-    useEffect(() => {
-        if (marqueeRef.current) {
-            setMarqueeWidth(marqueeRef.current.scrollWidth);
-        }
-    }, []);
-
-    // Create the stylists elements with spacing
-    const marqueeElements = stylists.map((s, idx) => ( // Maps stylists array
-        <span
-            key={s.name + idx} // Unique key for each stylist
-            className="inline-block mx-24" // Add margin for spacing
-        >
-            <span className="font-semibold">{s.name}</span>: {s.bio}
-        </span>
-    ));
-
-    // Animation speed
-    const speed = 100;
-    const duration = marqueeWidth ? marqueeWidth / speed : 10;
-
-    // alerts for form
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        alert(`Stylist: ${selectedStylist}\nService: ${serviceRequest}`);
-        setServiceRequest("");
-    };
-
     return (
         // Container for the marquee
-        <div className="w-[70%] mx-auto mb-2">
-            <h2 className="text-xl font-bold text-center mb-2 text-black">
+        <div className="w-full md:w-[95%] lg:w-[80%] mx-auto mb-6 px-4 md:px-0">
+            <h2 className="text-2xl md:text-3xl font-bold text-center mb-6 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-white">
                 Meet Our Stylists
             </h2>
-            <div className="overflow-hidden h-24 flex items-center bg-gradient-to-r from-blue-400 to-purple-400 py-1 shadow rounded text-black w-screen relative left-1/2 right-1/2 -translate-x-1/2 my-8">
+            <div className="overflow-hidden h-32 flex items-center bg-gradient-to-r from-blue-500 via-purple-500 to-blue-500 py-3 shadow-2xl border border-blue-200 w-screen relative left-1/2 right-1/2 -translate-x-1/2 my-10 backdrop-blur-sm">
                 <div
                     style={{
                         display: "inline-block",
                         whiteSpace: "nowrap",
-                        animation: "reviewMarquee 30s linear infinite"
+                        animation: "reviewMarquee 35s linear infinite"
                     }}
                     >
-                        {[...stylists, ...stylists].map((s, idx) => ( // For smooth scrolling
+                        {[...stylists, ...stylists].map((s, idx) => ( // Smooth scrolling
                             <span
                             key={s.name + idx}
                             className="inline-block"
-                            style={{ marginRight: "4rem" }} // Stylist spacing
+                            style={{ marginRight: "5rem" }} // Stylist spacing
                             >
-                                <span className="rounded-lg px-0 py-4 min-w-[200px] shadow-none text-black font-medium flex items-center gap-4 bg-transparent text-xl">
-                                    <span>
-                                        <strong>{s.name}:</strong> {s.bio}
+                                <span className="rounded-xl px-6 py-4 min-w-[280px] shadow-lg text-white font-semibold flex items-center justify-center bg-white/20 backdrop-blur-sm text-lg border border-white/30 transform transition-all duration-300">
+                                    <span className="text-center">
+                                        <div className="font-bold text-xl mb-1">{s.name}</div>
+                                        <div className="text-blue-100 text-sm">{s.bio}</div>
                                     </span>
                                 </span>
                             </span>

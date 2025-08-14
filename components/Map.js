@@ -16,9 +16,20 @@ const defaultIcon = new L.Icon({
 });
 
 export default function FindUsMap() {
+    const [mapError, setMapError] = useState(false);
+    const [isMapLoading, setIsMapLoading] = useState(true);
     const [mounted, setMounted] = useState(false);
     useEffect(() => {
         setMounted(true);
+    }, []);
+
+    useEffect(() => {
+        try {
+            setIsMapLoading(false);
+        } catch (error) {
+            setMapError(true);
+            setIsMapLoading(false);
+        }
     }, []);
 
     // Coordinates for the map
@@ -26,10 +37,36 @@ export default function FindUsMap() {
 
     if (!mounted) return null;
 
+    if (mapError) {
+        return (
+            <div className="flex justify-center items-center w-full my-8">
+                <div className="w-full max-w-[40vw] bg-gray-100 rounded-xl p-8 text-center border">
+                    <h3 className="text-lg font-semibold text-gray-800 mb-4">
+                        Map Temporarily Unavailable
+                    </h3>
+                    <p className="text-gray-600 mb-4">
+                        We're having trouble loading the map right now.
+                    </p>
+                    <div className="text-sm text-gray-700 bg-white p-4 rounded border">
+                        <strong>Visit us at:</strong><br/>
+                        Bay Street, Toronto, ON M5G 1Z3<br/>
+                        Phone: (416) 123-4567
+                    </div>
+                    <button 
+                        onClick={() => {setMapError(false); setIsMapLoading(true);}}
+                        className="mt-4 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+                    >
+                        Try Again
+                    </button>
+                </div>
+            </div>
+        );
+    }
+
     return (
         // Main container for the map
         <div className="flex justify-center items-center w-full my-8"> 
-            <div className="w-full max-w-xl rounded-xl shadow-lg overflow-hidden border border-gray-200 bg-white">
+            <div className="w-full max-w-[40vw] rounded-xl shadow-lg overflow-hidden border border-gray-200 bg-white">
                 <MapContainer
                     center={position} // Center of the map
                     zoom={13} // Initial zoom

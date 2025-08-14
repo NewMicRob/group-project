@@ -1,14 +1,14 @@
 import React from "react";
-import BookAppointment from "@/components/BookAppointment";
 import HairStylists from "@/components/HairStylists";
 import PageLayout from "@/components/PageLayout";
+import Home from "@/components/Home";
 
 // Main page component
-export default function Bookings() {
+export default function HomePage() {
   return (
-    <PageLayout title="Bookings">
+    <PageLayout title="Stylin Salon">
       <HairStylists />
-      <BookAppointment />
+      <Home />
     </PageLayout>
   );
 }

@@ -2,22 +2,28 @@
 import React, { useState } from "react";
 import Link from "next/link";
 
-export default function Footer() {
-    const currentYear = new Date().getFullYear();
+
+export default function Footer() { 
+    const currentYear = new Date().getFullYear(); // Get the current year
     const [isExpanded, setIsExpanded] = useState(false);
 
+    // Quick links for easy navigation in collapsible footer
     const quickLinks = [
-        { name: "Booking", href: "/" },
+        { name: "Home", href: "/" },
+        { name: "Services", href: "/Services" },
+        { name: "Booking", href: "/Booking" },
         { name: "Find Us", href: "/FindUs" },
         { name: "Reviews", href: "/Reviews" }
     ];
 
+    // Contact information
     const contactInfo = [
         { label: "Phone", value: "(000) 000-0000" },
         { label: "Email", value: "info@company.com", href: "mailto:info@company.com" },
-        { label: "Address", value: "123 Main St, City, State 12345" }
+        { label: "Address", value: "Bay Street, Toronto, ON M5G 1Z3" }
     ];
 
+    // Social media links
     const socials = [
         { name: "Twitter", href: "https://twitter.com" },
         { name: "Instagram", href: "https://instagram.com" },
@@ -26,7 +32,7 @@ export default function Footer() {
 
     return (
         <footer className="bg-gradient-to-r from-gray-800 to-gray-900 text-white">
-            {/* Toggle Button */}
+            {/* Toggle Button for collapsible */}
             <div className="container mx-auto px-6 py-2 flex justify-center border-b border-gray-600">
                 <button
                     onClick={() => setIsExpanded(!isExpanded)}

@@ -1,36 +1,88 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Stylin Salon
 
-## Getting Started
+Components - BookAppointment, Footer, HairStylists, Home, MainContent, Map, NavBar, PageLayout, ReviewForm, ServicePricing.
 
-First, run the development server:
+BookAppointment - Booking form with real-time validation, SweetAlert notifications, and stylist selection for appointment scheduling.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Footer - Collapsible footer containing contact info, quick links to all pages, and social media links with responsive design.  
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+HairStylists - Displays a scrolling marquee showcasing stylists and their specialties with smooth animations.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Home - Homepage component with welcome sections, salon history, about us, and responsive stylist cards display.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+MainContent - Wrapper component for main content sections across pages.
 
-## Learn More
+Map - Interactive Leaflet map with 40% viewport scaling, location marker, and error fallback display.
 
-To learn more about Next.js, take a look at the following resources:
+NavBar - Responsive navigation bar with active page highlighting and gradient styling.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+PageLayout - Main layout wrapper providing consistent structure with gradient backgrounds across all pages.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+ReviewForm - Customer review submission with name validation, rating system, marquee display, and localStorage persistence.
 
-## Deploy on Vercel
+ServicePricing - Interactive service pricing display with category tabs and animated service cards.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Routing - Next.js App Router - '/' Home page, '/Services' Services & Pricing, '/Booking' Appointment booking, '/FindUs' Location & Map, '/Reviews' Customer reviews.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+StateManagement - Local state management with useState for forms, reviews, and UI interactions. Props drilling for review data between pages and components.
+
+# Features
+Design & UI
+- Responsive design
+- Modern gradient backgrounds
+- Smooth animations and hover effects
+- Styling with Tailwind CSS
+
+Navigation & Routing
+- Responsive nav bar with active page highlighting
+- Next.js App Router for fast client-side navigation
+- Collapsible footer with quick links
+- 5 main pages: Home, Services, Booking, Find Us, Reviews
+
+Appointment Booking
+- Booking form with stylist selection
+- Real-time form validation with visual feedback
+- Email, phone, and name validation
+- Date and time selection
+- Service request customization
+- Success notifications with SweetAlert2
+
+Review System
+- Customer review submission form
+- Star rating system
+- Optional name field with auto-fill fallback
+- Review validation and error handling
+- Animated marquee display of recent reviews
+- localStorage persistence for reviews
+
+Service Pricing
+- Interactive service tabs
+- Animated service cards with hover effects
+- Pricing for all salon services
+- Categories
+
+Location & Map
+- Interactive Leaflet map integration
+- Responsive map sizing
+- Location marker with popup information
+- Error handling with fallback contact information
+
+Stylist Showcase
+- Animated marquee displaying all stylists
+- Stylist specialties and bio information
+- Smooth scrolling animations
+- Responsive stylist cards on homepage
+
+Technical Features
+- Built with Next.js and React
+- Turbopack for faster development builds
+- Client-side state management
+- Dynamic imports for performance optimization
+- Form validation with real-time feedback
+- Mobile-first responsive design
+- Accessibility features
+
+Performance
+- Lazy loading components for better performance
+- Fast page transitions with Next.js routing
+- Efficient state management

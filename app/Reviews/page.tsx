@@ -1,8 +1,14 @@
 "use client";
 import { useState } from "react";
+import dynamic from "next/dynamic";
 import MainContent from "@/components/MainContent";
-import ReviewForm from "@/components/ReviewForm";
 import PageLayout from "@/components/PageLayout";
+import HairStylists from "@/components/HairStylists";
+
+// Lazy loading the review form
+const ReviewForm = dynamic(() => import("@/components/ReviewForm"), {
+    loading: () => <div className="text-center py-8">Loading reviews...</div>
+});
 
 export default function ReviewsPage() {
     const [reviews, setReviews] = useState([ // Default reviews Array
@@ -19,9 +25,10 @@ export default function ReviewsPage() {
     ]);
 
     return (
-        <PageLayout title='Reviews'>
+        <PageLayout title="Stylin Salon">
+            <HairStylists />
             <MainContent>
-                {/* Reviews Section with props */}
+                {/* Reviews list with props */}
                 <ReviewForm reviews={reviews} setReviews={setReviews} />
             </MainContent>
         </PageLayout>
